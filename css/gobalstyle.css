@@ -1,0 +1,32 @@
+:root{
+    --color-light-50: #F0F8FF;
+
+    --color-dark-50: #D3D3D3;
+    --color-dark-100:  #808080;
+    --color-dark-900:  #000000;
+
+    --color-gray-50:#DCDCDC;
+    --color-gray-100:#C0C0C0;
+    --color-gray-200:#696969;
+    --color-gray-450:#363636;
+
+    --color-gradient: linear-gradient(90deg, var(--color-gray-100),var(--color-gray-200),var(--color-gray-450));
+}
+
+
+.espaco{
+    padding: 25px 25px;
+}
+
+.top{
+    padding-top: 52px;
+}
+
+.linha{
+    border-top: 8px solid #8c8b8b;
+    border-radius: 10px;
+    border-right: 100%;
+}
+.espacamento{
+    margin-top: 20px;
+}
