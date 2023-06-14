@@ -141,7 +141,7 @@
     color: var(--color-gray-450);
 }
 
-#login{
+#cadastrar{
     border: none;
     background: var(--color-gradient);
     color: var(--color-dark-900);
@@ -152,7 +152,8 @@
     cursor: pointer;
 }
 
-#login:hover{
+#cadastrar:hover{
     transform: scale(1.01);
+
 }
 

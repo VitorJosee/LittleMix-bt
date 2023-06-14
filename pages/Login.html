@@ -10,7 +10,7 @@
     <title>Login</title>
 </head>
 <body>
-   <maic id="container">
+   <main id="container">
     <form id="login_form">
         <div id="login_top">
             
@@ -39,7 +39,7 @@
                         Email
                         <div class="input_field">
                             <i class="fa-solid fa-envelope"></i>
-                            <input type="text" id="email" name="email" onchange="validateFields()">
+                            <input type="text" id="email" name="email">
                         </div>
                     </label>
                 </div>
@@ -48,7 +48,7 @@
                     Senha
                         <div class="input_field">
                             <i class="fa-solid fa-key"></i>
-                            <input type="password" id="Password" name="Password">
+                            <input type="password" id="password" name="Password">
                         </div>
                     </label>
                 </div>
@@ -66,7 +66,7 @@
                     <img src="../img/icons8-google-logo-48.png" alt=" Google Logo">
                 </a>
             </div>
-            <button type="submit" id="login_button" disabled="true">
+            <button id="login">
                 Login
             </button>
             <div id="singin">
@@ -75,11 +75,16 @@
                 </a>
             </div>
     </form>
-   </maic>
+   </main>
 
-   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-   <script>
+   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+        
+        } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyD6exsn8CElRmZJmAdXo4aiYY9ZebAXAHs",
             authDomain: "littlemixmobile.firebaseapp.com",
@@ -89,8 +94,33 @@
             messagingSenderId: "341192228717",
             appId: "1:341192228717:web:4272eaa5e89d0a54022464"
         };
-        firebase.initializaApp(firebaseConfig);
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const emailUser = document.querySelector("#email");
+        const passwordUser = document.querySelector("#password");
+        const loginButton = document.querySelector("#login");
+
+        const login = async() => {
+            const loginEmail = emailUser.value;
+            const loginPassword = passwordUser.value;
+            signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              alert('Login feito com Sucesso!')
+              window.location.href = "../index.html"
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert('Login feito com Sucesso!')
+            });
+        }
+
+        loginButton.addEventListener('click', login);
    </script>
-   <script src="../js/validacao.js"></script>
+   
 </body>
 </html>
